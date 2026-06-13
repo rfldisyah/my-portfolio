@@ -1,8 +1,8 @@
 import { FaGithub, FaLinkedin, FaInstagram, FaEnvelope, FaAngleUp } from 'react-icons/fa';
 import { portfolioData } from '../constants/portfolioData';
 
-export default function Footer({ darkMode }) {
-  const { name, socials } = portfolioData.personalInfo;
+export default function Footer({ darkMode, lang }) {
+  const { name, socials } = portfolioData[lang].personalInfo;
   const currentYear = new Date().getFullYear();
 
   const scrollToTop = (e) => {
@@ -73,7 +73,7 @@ export default function Footer({ darkMode }) {
                 ? 'bg-slate-900 border-slate-800 text-slate-400 hover:bg-[#233549] hover:text-white'
                 : 'bg-white border-slate-200 text-slate-500 hover:bg-[#577B95] hover:text-white hover:border-[#577B95]'
             }`}
-            title="Kembali ke atas"
+            title={lang === 'en' ? 'Back to top' : 'Kembali ke atas'}
           >
             <FaAngleUp size={15} />
           </a>

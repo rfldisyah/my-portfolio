@@ -2,31 +2,30 @@ import { useState, useEffect } from 'react';
 import { FaSun, FaMoon } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 
-// Penyelarasan urutan: Home, About, Experience, Projects, Contact
-const navLinks = [
-  { name: 'Home',       target: 'home' },
-  { name: 'About',      target: 'about' },
-  { name: 'Experience', target: 'experience' },
-  { name: 'Projects',   target: 'projects' },
-  { name: 'Contact',    target: 'contact' },
-];
-
-export default function Navbar({ darkMode, toggleDarkMode }) {
+export default function Navbar({ darkMode, toggleDarkMode, lang, setLang }) {
+  const navLinks = [
+    { name: lang === 'en' ? 'Home' : 'Beranda',       target: 'home' },
+    { name: lang === 'en' ? 'About' : 'Tentang',      target: 'about' },
+    { name: lang === 'en' ? 'Experience' : 'Pengalaman', target: 'experience' },
+    { name: lang === 'en' ? 'Projects' : 'Proyek',   target: 'projects' },
+    { name: lang === 'en' ? 'Contact' : 'Kontak',    target: 'contact' },
+  ];
   const [activeTab, setActiveTab] = useState('home');
   const [mobileOpen, setMobileOpen] = useState(false);
 
   // Native Scroll Spy
   useEffect(() => {
+    const spyTargets = ['home', 'about', 'experience', 'projects', 'contact'];
     const handleScroll = () => {
       const scrollPosition = window.scrollY + 120; // Offset deteksi active tab
       
-      for (const link of navLinks) {
-        const el = document.getElementById(link.target);
+      for (const target of spyTargets) {
+        const el = document.getElementById(target);
         if (el) {
           const top = el.offsetTop;
           const height = el.offsetHeight;
           if (scrollPosition >= top && scrollPosition < top + height) {
-            setActiveTab(link.target);
+            setActiveTab(target);
             break;
           }
         }
@@ -97,6 +96,18 @@ export default function Navbar({ darkMode, toggleDarkMode }) {
           <span className={`h-4 w-px shrink-0 ${darkMode ? 'bg-slate-800' : 'bg-slate-200'}`} />
 
           <button
+            onClick={() => setLang(lang === 'en' ? 'id' : 'en')}
+            className={`px-2 py-1.5 rounded-xl text-[10px] font-bold border transition-colors duration-200 cursor-pointer ${
+              darkMode
+                ? 'bg-slate-900/60 border-slate-800 text-slate-300 hover:text-white hover:bg-slate-800/60'
+                : 'bg-white border-slate-200 text-slate-600 hover:text-slate-900 hover:bg-slate-50'
+            }`}
+            aria-label="Toggle Language"
+          >
+            {lang === 'en' ? 'ID' : 'EN'}
+          </button>
+
+          <button
             onClick={toggleDarkMode}
             className={`p-1.5 rounded-lg transition-colors duration-200 cursor-pointer ${
               darkMode ? 'text-amber-400 hover:text-amber-300' : 'text-slate-400 hover:text-slate-700'
@@ -123,7 +134,18 @@ export default function Navbar({ darkMode, toggleDarkMode }) {
           <span className="text-[#577B95]">.dev</span>
         </a>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2">
+          <button
+            onClick={() => setLang(lang === 'en' ? 'id' : 'en')}
+            className={`px-1.5 py-0.5 rounded text-[10px] font-bold border transition-colors duration-200 ${
+              darkMode
+                ? 'border-slate-800 text-slate-350 hover:text-white bg-slate-900/60'
+                : 'border-slate-200 text-slate-650 hover:text-slate-800 bg-white shadow-sm'
+            }`}
+            aria-label="Toggle Language"
+          >
+            {lang === 'en' ? 'ID' : 'EN'}
+          </button>
           <button onClick={toggleDarkMode} className={`p-1.5 cursor-pointer ${darkMode ? 'text-amber-400' : 'text-slate-500'}`} aria-label="Toggle Theme">
             {darkMode ? <FaSun size={13} /> : <FaMoon size={13} />}
           </button>

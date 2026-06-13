@@ -5,8 +5,9 @@ import { FaPaperPlane, FaEnvelope, FaMapMarkerAlt, FaWhatsapp } from 'react-icon
 import emailjs from '@emailjs/browser';
 import { portfolioData } from '../constants/portfolioData';
 
-export default function Contact({ darkMode }) {
-  const { socials } = portfolioData.personalInfo;
+export default function Contact({ darkMode, lang }) {
+  const { socials } = portfolioData[lang].personalInfo;
+  const common = portfolioData[lang].common;
   const formRef = useRef();
   
   const [formData, setFormData] = useState({
@@ -35,7 +36,7 @@ export default function Contact({ darkMode }) {
     e.preventDefault();
     
     if (!formData.user_name || !formData.user_email || !formData.message) {
-      setStatus({ submitting: false, success: false, error: 'Mohon isi semua bidang formulir.' });
+      setStatus({ submitting: false, success: false, error: lang === 'en' ? 'Please fill in all form fields.' : 'Mohon isi semua bidang formulir.' });
       return;
     }
 
@@ -64,7 +65,7 @@ export default function Contact({ darkMode }) {
           setStatus({
             submitting: false,
             success: false,
-            error: `Gagal mengirim pesan: ${error.text || 'Koneksi bermasalah'}`,
+            error: lang === 'en' ? `Failed to send message: ${error.text || 'Connection error'}` : `Gagal mengirim pesan: ${error.text || 'Koneksi bermasalah'}`,
           });
         }
       );
@@ -85,11 +86,14 @@ export default function Contact({ darkMode }) {
             {/* Section Header */}
             <div className="text-center max-w-2xl mx-auto mb-16">
               <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white">
-                Hubungi <span className="bg-gradient-to-r from-[#577B95] to-[#99B9C9] bg-clip-text text-transparent">Saya</span>
+                {lang === 'en' ? 'Contact' : 'Hubungi'}{' '}
+                <span className="bg-gradient-to-r from-[#577B95] to-[#99B9C9] bg-clip-text text-transparent">{lang === 'en' ? 'Me' : 'Saya'}</span>
               </h2>
               <div className="w-16 h-1 bg-gradient-to-r from-[#577B95] to-[#99B9C9] mx-auto mt-4 rounded-full"></div>
               <p className={`mt-4 ${darkMode ? 'text-slate-400' : 'text-slate-655'}`}>
-                Kirimkan surat elektronik atau hubungi melalui akun media komunikasi sosial lainnya.
+                {lang === 'en'
+                  ? 'Send me an email or reach out through other social communication channels.'
+                  : 'Kirimkan surat elektronik atau hubungi melalui akun media komunikasi sosial lainnya.'}
               </p>
             </div>
     
@@ -104,11 +108,11 @@ export default function Contact({ darkMode }) {
           >
             <div className="flex items-center gap-2 mb-4">
               <span className="h-px w-6 bg-[#577B95] rounded-full" />
-              <span className={`text-xs font-mono font-bold uppercase tracking-[0.18em] ${darkMode ? 'text-[#99B9C9]' : 'text-[#577B95]'}`}>Saluran Kontak</span>
+              <span className={`text-xs font-mono font-bold uppercase tracking-[0.18em] ${darkMode ? 'text-[#99B9C9]' : 'text-[#577B95]'}`}>{common.contact.title}</span>
             </div>
             
             <p className={`leading-relaxed mb-8 text-sm md:text-base ${darkMode ? 'text-slate-400' : 'text-slate-655'}`}>
-              Tertarik bekerja sama? Silakan kirimi saya email atau hubungi melalui pesan langsung. Saya akan membalas secepat mungkin.
+              {common.contact.desc}
             </p>
 
             <div className="space-y-4">
@@ -140,7 +144,7 @@ export default function Contact({ darkMode }) {
                   <FaMapMarkerAlt />
                 </div>
                 <div>
-                  <span className="block text-[10px] font-bold font-mono uppercase text-slate-400 tracking-wider">Lokasi</span>
+                  <span className="block text-[10px] font-bold font-mono uppercase text-slate-400 tracking-wider">{lang === 'en' ? 'Location' : 'Lokasi'}</span>
                   <span className={`text-sm md:text-base font-bold ${
                     darkMode ? 'text-white' : 'text-slate-955'
                   }`}>
@@ -195,7 +199,7 @@ export default function Contact({ darkMode }) {
                   htmlFor="user_name"
                   className={`block text-xs font-mono font-bold uppercase tracking-wider mb-2 ${darkMode ? 'text-slate-400' : 'text-slate-700'}`}
                 >
-                  Nama Lengkap
+                  {lang === 'en' ? 'Full Name' : 'Nama Lengkap'}
                 </label>
                 <input
                   type="text"
@@ -203,7 +207,7 @@ export default function Contact({ darkMode }) {
                   name="user_name"
                   value={formData.user_name}
                   onChange={handleChange}
-                  placeholder="Nama lengkap Anda..."
+                  placeholder={lang === 'en' ? 'Your full name...' : 'Nama lengkap Anda...'}
                   className={`w-full px-4 py-2.5 rounded-xl border text-xs focus:outline-none focus:ring-2 focus:ring-[#577B95] transition-all duration-300 ${
                     darkMode
                       ? 'bg-slate-950 border-slate-800 text-white placeholder-slate-600'
@@ -218,7 +222,7 @@ export default function Contact({ darkMode }) {
                   htmlFor="user_email"
                   className={`block text-xs font-mono font-bold uppercase tracking-wider mb-2 ${darkMode ? 'text-slate-400' : 'text-slate-700'}`}
                 >
-                  Alamat Email
+                  {lang === 'en' ? 'Email Address' : 'Alamat Email'}
                 </label>
                 <input
                   type="email"
@@ -226,7 +230,7 @@ export default function Contact({ darkMode }) {
                   name="user_email"
                   value={formData.user_email}
                   onChange={handleChange}
-                  placeholder="Email aktif Anda..."
+                  placeholder={lang === 'en' ? 'Your active email...' : 'Email aktif Anda...'}
                   className={`w-full px-4 py-2.5 rounded-xl border text-xs focus:outline-none focus:ring-2 focus:ring-[#577B95] transition-all duration-300 ${
                     darkMode
                       ? 'bg-slate-950 border-slate-800 text-white placeholder-slate-600'
@@ -241,7 +245,7 @@ export default function Contact({ darkMode }) {
                   htmlFor="message"
                   className={`block text-xs font-mono font-bold uppercase tracking-wider mb-2 ${darkMode ? 'text-slate-400' : 'text-slate-700'}`}
                 >
-                  Pesan
+                  {lang === 'en' ? 'Message' : 'Pesan'}
                 </label>
                 <textarea
                   id="message"
@@ -249,7 +253,7 @@ export default function Contact({ darkMode }) {
                   rows="4"
                   value={formData.message}
                   onChange={handleChange}
-                  placeholder="Tuliskan pesan Anda di sini..."
+                  placeholder={lang === 'en' ? 'Write your message here...' : 'Tuliskan pesan Anda di sini...'}
                   className={`w-full px-4 py-2.5 rounded-xl border text-xs focus:outline-none focus:ring-2 focus:ring-[#577B95] transition-all duration-300 resize-none ${
                     darkMode
                       ? 'bg-slate-950 border-slate-800 text-white placeholder-slate-600'
@@ -267,7 +271,7 @@ export default function Contact({ darkMode }) {
               )}
               {status.success && (
                 <div className="p-4 rounded-2xl text-xs font-bold font-mono bg-emerald-500/10 border border-emerald-500/20 text-emerald-500">
-                  🎉 BERHASIL: Pesan Anda telah dikirim!
+                  {lang === 'en' ? '🎉 SUCCESS: Your message has been sent!' : '🎉 BERHASIL: Pesan Anda telah dikirim!'}
                 </div>
               )}
 
@@ -279,10 +283,10 @@ export default function Contact({ darkMode }) {
                   className="px-5 py-2.5 rounded-lg text-xs cursor-pointer bg-gradient-to-r from-[#577B95] to-[#99B9C9] hover:from-[#4d6d85] hover:to-[#8fb0c1] text-white font-bold flex items-center justify-center gap-2 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed shadow-md hover:shadow-lg shadow-[#577B95]/10 hover:shadow-[#577B95]/25 w-full sm:w-auto"
                 >
                   {status.submitting ? (
-                    <span>Mengirim...</span>
+                    <span>{lang === 'en' ? 'Sending...' : 'Mengirim...'}</span>
                   ) : (
                     <>
-                      <span>Kirim Pesan</span>
+                      <span>{lang === 'en' ? 'Send Message' : 'Kirim Pesan'}</span>
                       <FaPaperPlane size={11} />
                     </>
                   )}

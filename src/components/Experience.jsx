@@ -3,8 +3,8 @@ import { useInView } from 'react-intersection-observer';
 import { FaBriefcase, FaMapMarkerAlt } from 'react-icons/fa';
 import { portfolioData } from '../constants/portfolioData';
 
-export default function Experience({ darkMode }) {
-  const experiences = portfolioData.experiences;
+export default function Experience({ darkMode, lang }) {
+  const experiences = portfolioData[lang].experiences;
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.06 });
 
   return (
@@ -22,12 +22,12 @@ export default function Experience({ darkMode }) {
         {/* Section Header */}
         <div className="text-center mb-16">
           <span className={`inline-block text-xs font-mono font-bold uppercase tracking-[0.18em] mb-3 ${darkMode ? 'text-[#99B9C9]' : 'text-[#577B95]'}`}>
-            Career
+            {lang === 'en' ? 'Career' : 'Karir'}
           </span>
           <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white">
-            Alur{' '}
+            {lang === 'en' ? 'Working' : 'Alur'}{' '}
             <span className="bg-gradient-to-r from-[#577B95] to-[#99B9C9] bg-clip-text text-transparent">
-              Karir
+              {lang === 'en' ? 'Experience' : 'Karir'}
             </span>
           </h2>
           <div className="w-12 h-[2px] bg-gradient-to-r from-[#577B95] to-[#99B9C9] mx-auto mt-4 rounded-full" />

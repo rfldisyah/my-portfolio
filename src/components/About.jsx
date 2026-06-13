@@ -50,18 +50,20 @@ const categoryColors = {
   'Frontend': 'border-[#577B95]/30 text-[#577B95] dark:text-[#99B9C9] bg-[#577B95]/5',
   'Backend & Database': 'border-[#99B9C9]/30 text-cyan-600 dark:text-[#99B9C9] bg-[#99B9C9]/5',
   'Mobile': 'border-slate-400/35 text-slate-700 dark:text-slate-300 bg-slate-500/5',
-  'Lainnya / Tools': 'border-[#577B95]/20 text-slate-650 dark:text-slate-400 bg-slate-100/5'
+  'Lainnya / Tools': 'border-[#577B95]/20 text-slate-650 dark:text-slate-400 bg-slate-100/5',
+  'Others / Tools': 'border-[#577B95]/20 text-slate-650 dark:text-slate-400 bg-slate-100/5'
 };
 
-export default function About({ darkMode }) {
-  const { bio } = portfolioData.personalInfo;
-  const stats = portfolioData.stats;
-  const skills = portfolioData.skills;
+export default function About({ darkMode, lang }) {
+  const { bio } = portfolioData[lang].personalInfo;
+  const stats = portfolioData[lang].stats;
+  const skills = portfolioData[lang].skills;
+  const common = portfolioData[lang].common;
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
 
-  const filteredCertificates = portfolioData.certificates.filter((cert) => {
+  const filteredCertificates = portfolioData[lang].certificates.filter((cert) => {
     const q = searchQuery.toLowerCase();
     return (
       cert.title.toLowerCase().includes(q) ||
@@ -91,11 +93,16 @@ export default function About({ darkMode }) {
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-16">
           <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white">
-            Konsep & <span className="bg-gradient-to-r from-[#577B95] to-[#99B9C9] bg-clip-text text-transparent">Keahlian</span>
+            {lang === 'en' ? 'Concept &' : 'Konsep &'}{' '}
+            <span className="bg-gradient-to-r from-[#577B95] to-[#99B9C9] bg-clip-text text-transparent">
+              {lang === 'en' ? 'Skills' : 'Keahlian'}
+            </span>
           </h2>
           <div className="w-16 h-1 bg-gradient-to-r from-[#577B95] to-[#99B9C9] mx-auto mt-4 rounded-full"></div>
           <p className={`mt-4 ${darkMode ? 'text-slate-400' : 'text-slate-600'}`}>
-            Filosofi kerja saya dipadukan dengan data performa dan senjata andalan pemrograman.
+            {lang === 'en'
+              ? 'My work philosophy combined with performance metrics and core technologies.'
+              : 'Filosofi kerja saya dipadukan dengan data performa dan senjata andalan pemrograman.'}
           </p>
         </div>
 
@@ -114,7 +121,7 @@ export default function About({ darkMode }) {
 
           <div className="flex items-center justify-center gap-2 mb-4">
             <span className="h-px w-8 bg-gradient-to-r from-transparent to-[#577B95] rounded-full" />
-            <span className={`text-xs font-mono font-bold uppercase tracking-[0.18em] ${darkMode ? 'text-[#99B9C9]' : 'text-[#577B95]'}`}>Filosofi Kerja</span>
+            <span className={`text-xs font-mono font-bold uppercase tracking-[0.18em] ${darkMode ? 'text-[#99B9C9]' : 'text-[#577B95]'}`}>{common.about.philosophy}</span>
             <span className="h-px w-8 bg-gradient-to-l from-transparent to-[#577B95] rounded-full" />
           </div>
           <p className={`leading-relaxed text-sm md:text-base ${darkMode ? 'text-slate-350' : 'text-slate-650'}`}>
@@ -150,7 +157,7 @@ export default function About({ darkMode }) {
         <div className="w-full max-w-4xl space-y-6">
           <div className="flex items-center justify-center gap-2 mb-2">
             <span className="h-px w-8 bg-gradient-to-r from-transparent to-[#577B95] rounded-full" />
-            <span className={`text-xs font-mono font-bold uppercase tracking-[0.18em] ${darkMode ? 'text-[#99B9C9]' : 'text-[#577B95]'}`}>Tech Stack &amp; Keahlian</span>
+            <span className={`text-xs font-mono font-bold uppercase tracking-[0.18em] ${darkMode ? 'text-[#99B9C9]' : 'text-[#577B95]'}`}>{common.about.statsHeader}</span>
             <span className="h-px w-8 bg-gradient-to-l from-transparent to-[#577B95] rounded-full" />
           </div>
 
@@ -228,11 +235,11 @@ export default function About({ darkMode }) {
           <div className="space-y-6">
             <div className="flex items-center gap-2 mb-2 justify-start">
               <FaGraduationCap className="text-[#577B95] dark:text-[#99B9C9] text-xl" />
-              <h3 className={`text-base md:text-lg font-bold tracking-tight ${darkMode ? 'text-white' : 'text-slate-900'}`}>Pendidikan</h3>
+              <h3 className={`text-base md:text-lg font-bold tracking-tight ${darkMode ? 'text-white' : 'text-slate-900'}`}>{common.about.educationHeader}</h3>
             </div>
             
             <div className="space-y-10 relative border-l-2 border-slate-200 dark:border-slate-800/80 pl-6 ml-3">
-              {portfolioData.education.map((edu, idx) => (
+              {portfolioData[lang].education.map((edu, idx) => (
                 <div key={idx} className="relative group">
                   {/* Timeline Dot */}
                   <span className={`absolute -left-[31px] top-1.5 w-3.5 h-3.5 rounded-full border-2 transition-colors duration-300 ${
@@ -275,11 +282,11 @@ export default function About({ darkMode }) {
           <div className="space-y-6">
             <div className="flex items-center gap-2 mb-2 justify-start">
               <FaAward className="text-[#577B95] dark:text-[#99B9C9] text-xl" />
-              <h3 className={`text-base md:text-lg font-bold tracking-tight ${darkMode ? 'text-white' : 'text-slate-900'}`}>Sertifikasi Utama</h3>
+              <h3 className={`text-base md:text-lg font-bold tracking-tight ${darkMode ? 'text-white' : 'text-slate-900'}`}>{common.about.certHeader}</h3>
             </div>
 
             <div className="space-y-4">
-              {portfolioData.certificates.filter(c => c.featured).map((cert, idx) => (
+              {portfolioData[lang].certificates.filter(c => c.featured).map((cert, idx) => (
                 <div
                   key={idx}
                   className={`p-4 rounded-2xl border flex items-center justify-between gap-4 transition-all duration-300 ${
@@ -322,7 +329,7 @@ export default function About({ darkMode }) {
                     : 'bg-white border-slate-200 text-[#577B95] hover:border-[#577B95] hover:bg-slate-50'
                 }`}
               >
-                Lihat Semua Sertifikat ({portfolioData.certificates.length})
+                {common.about.viewAllCerts} ({portfolioData[lang].certificates.length})
               </button>
             </div>
           </div>
@@ -358,9 +365,13 @@ export default function About({ darkMode }) {
               {/* Header */}
               <div className="p-5 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between gap-4">
                 <div>
-                  <h3 className="text-sm md:text-base font-extrabold tracking-tight">Galeri Sertifikasi & Penghargaan</h3>
+                  <h3 className="text-sm md:text-base font-extrabold tracking-tight">
+                    {lang === 'en' ? 'Certifications & Awards Gallery' : 'Galeri Sertifikasi & Penghargaan'}
+                  </h3>
                   <p className={`text-[9px] font-mono mt-0.5 ${darkMode ? 'text-slate-400' : 'text-slate-500'}`}>
-                    Daftar seluruh pelatihan akademis & sertifikasi kompetensi.
+                    {lang === 'en'
+                      ? 'List of all academic training & professional certifications.'
+                      : 'Daftar seluruh pelatihan akademis & sertifikasi kompetensi.'}
                   </p>
                 </div>
                 <button
@@ -378,7 +389,11 @@ export default function About({ darkMode }) {
                 <FaSearch className="text-slate-400 text-xs shrink-0" />
                 <input
                   type="text"
-                  placeholder="Cari sertifikat berdasarkan nama atau penerbit..."
+                  placeholder={
+                    lang === 'en'
+                      ? 'Search certificates by name or issuer...'
+                      : 'Cari sertifikat berdasarkan nama atau penerbit...'
+                  }
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   className={`w-full text-xs bg-transparent focus:outline-none placeholder-slate-400 ${
@@ -418,7 +433,7 @@ export default function About({ darkMode }) {
                               : 'bg-white border-slate-200 text-slate-650 hover:text-[#577B95] hover:border-[#577B95]/50'
                           }`}
                         >
-                          <span>Kredensial</span>
+                          <span>{lang === 'en' ? 'Credential' : 'Kredensial'}</span>
                           <FaExternalLinkAlt size={8} />
                         </a>
                       )}
@@ -426,7 +441,9 @@ export default function About({ darkMode }) {
                   ))
                 ) : (
                   <p className="text-center text-xs text-slate-500 py-8">
-                    Tidak ada sertifikat yang cocok dengan pencarian Anda.
+                    {lang === 'en'
+                      ? 'No certificates found matching your search.'
+                      : 'Tidak ada sertifikat yang cocok dengan pencarian Anda.'}
                   </p>
                 )}
               </div>

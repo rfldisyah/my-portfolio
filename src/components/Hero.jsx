@@ -4,15 +4,17 @@ import { FaGithub, FaLinkedin, FaInstagram, FaEnvelope, FaDownload, FaArrowRight
 import { SiTailwindcss } from 'react-icons/si';
 import { portfolioData } from '../constants/portfolioData';
 
-export default function Hero({ darkMode }) {
-  const { name, title, bio, subtitle, socials, cvUrl, avatar } = portfolioData.personalInfo;
+export default function Hero({ darkMode, lang }) {
+  const { name, title, bio, subtitle, socials, cvUrl, avatar } = portfolioData[lang].personalInfo;
+  const common = portfolioData[lang].common;
 
   const [text, setText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
-  const fullText = 'Hi ..';
-  const chars = Array.from(fullText);
+
 
   useEffect(() => {
+    const fullText = lang === 'en' ? 'Hi ..' : 'Halo ..';
+    const chars = Array.from(fullText);
     const currentLength = Array.from(text).length;
     let timer;
 
@@ -32,7 +34,7 @@ export default function Hero({ darkMode }) {
     }
 
     return () => clearTimeout(timer);
-  }, [text, isDeleting]);
+  }, [text, isDeleting, lang]);
 
   const scrollToProjects = (e) => {
     e.preventDefault();
@@ -69,7 +71,7 @@ export default function Hero({ darkMode }) {
           <div className="flex items-center justify-center lg:justify-start gap-1.5">
             <span className="h-px w-5 bg-[#577B95] rounded-full" />
             <span className={`text-[10px] font-mono font-bold uppercase tracking-[0.18em] ${darkMode ? 'text-[#99B9C9]' : 'text-[#577B95]'}`}>
-              Ringkasan
+              {common.hero.summary}
             </span>
           </div>
 
@@ -228,12 +230,12 @@ export default function Hero({ darkMode }) {
           {/* Tagline */}
           <div className="space-y-1.5">
             <p className={`text-[10px] font-mono font-bold uppercase tracking-[0.18em] ${darkMode ? 'text-[#99B9C9]' : 'text-[#577B95]'}`}>
-              — What I do
+              — {common.hero.whatIDo}
             </p>
             <p className={`text-base md:text-lg font-extrabold tracking-tight leading-snug ${darkMode ? 'text-white' : 'text-slate-900'}`}>
-              Turning ideas into{' '}
+              {common.hero.tagline}{' '}
               <span className="bg-gradient-to-r from-[#577B95] to-[#99B9C9] bg-clip-text text-transparent">
-                elegant digital products.
+                {common.hero.taglineHighlight}
               </span>
             </p>
           </div>
@@ -250,14 +252,14 @@ export default function Hero({ darkMode }) {
               }`}
             >
               <FaDownload size={11} />
-              Download CV
+              {common.hero.downloadCv}
             </a>
             <a
               href="#projects"
               onClick={scrollToProjects}
               className="flex-1 sm:flex-none flex items-center justify-center gap-2 px-4 py-2.5 text-xs rounded-xl cursor-pointer bg-gradient-to-r from-[#577B95] to-[#99B9C9] text-white font-semibold shadow-sm hover:shadow-lg hover:-translate-y-0.5 transition-all duration-250"
             >
-              Proyek Saya
+              {common.hero.myProjects}
               <FaArrowRight size={10} />
             </a>
           </div>

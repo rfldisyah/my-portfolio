@@ -13,6 +13,7 @@ import './App.css';
 function App() {
   const [darkMode, setDarkMode] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const [lang, setLang] = useState('en');
 
   useEffect(() => {
     if (darkMode) {
@@ -40,16 +41,16 @@ function App() {
             ? 'bg-[#0d1b2a] text-slate-300 bg-grid-pattern-dark'
             : 'bg-white text-slate-700 bg-grid-pattern'
         }`}>
-          <Navbar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+          <Navbar darkMode={darkMode} toggleDarkMode={toggleDarkMode} lang={lang} setLang={setLang} />
           <main className="relative z-10">
-            <Hero darkMode={darkMode} />
+            <Hero darkMode={darkMode} lang={lang} key={lang} />
             {/* About sudah mencakup Education di dalamnya */}
-            <About darkMode={darkMode} />
-            <Experience darkMode={darkMode} />
-            <Projects darkMode={darkMode} />
-            <Contact darkMode={darkMode} />
+            <About darkMode={darkMode} lang={lang} />
+            <Experience darkMode={darkMode} lang={lang} />
+            <Projects darkMode={darkMode} lang={lang} />
+            <Contact darkMode={darkMode} lang={lang} />
           </main>
-          <Footer darkMode={darkMode} />
+          <Footer darkMode={darkMode} lang={lang} />
         </div>
       )}
     </>

@@ -31,8 +31,8 @@ const TECH_ICONS = {
   'Git':           { icon: FaGitAlt,      color: '#F05032' },
 };
 
-export default function Projects({ darkMode }) {
-  const projects = portfolioData.projects;
+export default function Projects({ darkMode, lang }) {
+  const projects = portfolioData[lang].projects;
   const [showAll, setShowAll] = useState(false);
 
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.05 });
@@ -60,9 +60,9 @@ export default function Projects({ darkMode }) {
             Portfolio
           </span>
           <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white">
-            Project{' '}
+            {lang === 'en' ? 'Featured' : 'Project'}{' '}
             <span className="bg-gradient-to-r from-[#577B95] to-[#99B9C9] bg-clip-text text-transparent">
-              Pilihan
+              {lang === 'en' ? 'Projects' : 'Pilihan'}
             </span>
           </h2>
           <div className="w-12 h-[2px] bg-gradient-to-r from-[#577B95] to-[#99B9C9] mx-auto mt-4 rounded-full" />
@@ -171,10 +171,12 @@ export default function Projects({ darkMode }) {
             >
               <div className="text-left mb-6">
                 <h3 className={`text-base md:text-lg font-bold tracking-tight ${darkMode ? 'text-white' : 'text-slate-900'}`}>
-                  Proyek Lainnya
+                  {lang === 'en' ? 'More Projects' : 'Proyek Lainnya'}
                 </h3>
                 <p className={`text-[10px] font-mono mt-0.5 ${darkMode ? 'text-slate-450' : 'text-slate-500'}`}>
-                  Geser menyamping untuk melihat riwayat proyek lainnya.
+                  {lang === 'en'
+                    ? 'Swipe sideways to see other project history.'
+                    : 'Geser menyamping untuk melihat riwayat proyek lainnya.'}
                 </p>
               </div>
 
@@ -251,9 +253,9 @@ export default function Projects({ darkMode }) {
               }`}
             >
               {showAll ? (
-                <span>Tampilkan Lebih Sedikit</span>
+                <span>{lang === 'en' ? 'Show Less' : 'Tampilkan Lebih Sedikit'}</span>
               ) : (
-                <span>Lihat Semua Proyek ({projects.length})</span>
+                <span>{lang === 'en' ? 'View All Projects' : 'Lihat Semua Proyek'} ({projects.length})</span>
               )}
             </button>
           </div>
