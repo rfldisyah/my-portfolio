@@ -30,7 +30,7 @@ export const portfolioData = {
         { name: "React / Next.js", level: "90%", icon: "FaReact" },
         { name: "Tailwind CSS", level: "95%", icon: "SiTailwindcss" },
         { name: "TypeScript", level: "85%", icon: "SiTypescript" },
-        { name: "Redux / Zustand", level: "85%", icon: "SiRedux" }
+        { name: "Redux", level: "70%", icon: "SiRedux" }
       ]
     },
     {
@@ -40,7 +40,7 @@ export const portfolioData = {
         { name: "PHP", level: "80%", icon: "SiPhp" },
         { name: "Laravel", level: "80%", icon: "SiLaravel" },
         { name: "MySQL", level: "85%", icon: "SiMysql" },
-        { name: "MongoDB", level: "75%", icon: "SiMongodb" }
+        { name: "MongoDB", level: "60%", icon: "SiMongodb" }
       ]
     },
     {
