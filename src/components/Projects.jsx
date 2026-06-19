@@ -1,34 +1,57 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { FaGithub, FaExternalLinkAlt, FaReact, FaNodeJs, FaGitAlt } from 'react-icons/fa';
+import { FaGithub, FaExternalLinkAlt, FaReact, FaNodeJs, FaGitAlt, FaUsers, FaJs, FaDocker, FaFigma, FaDatabase, FaGlobe } from 'react-icons/fa';
 import {
   SiNextdotjs, SiTailwindcss, SiMongodb, SiRedux, SiNestjs,
   SiPostgresql, SiExpo, SiSocketdotio, SiGatsby, SiGraphql,
-  SiStripe, SiTypescript, SiExpress,
+  SiStripe, SiTypescript, SiExpress, SiMysql, SiFramer, SiLeaflet,
+  SiPhp, SiLaravel, SiOpenai
 } from 'react-icons/si';
 import { portfolioData } from '../constants/portfolioData';
 
 // Peta nama teknologi → ikon + warna
 const TECH_ICONS = {
-  'React':         { icon: FaReact,       color: '#61DAFB' },
-  'React Native':  { icon: FaReact,       color: '#61DAFB' },
-  'Next.js':       { icon: SiNextdotjs,   color: '#000', darkColor: '#fff' },
-  'Tailwind CSS':  { icon: SiTailwindcss, color: '#06B6D4' },
-  'TypeScript':    { icon: SiTypescript,  color: '#3178C6' },
-  'Redux Toolkit': { icon: SiRedux,       color: '#764ABC' },
-  'Zustand':       { icon: SiRedux,       color: '#764ABC' },
-  'Node.js':       { icon: FaNodeJs,      color: '#339933' },
-  'Express.js':    { icon: SiExpress,     color: '#888', darkColor: '#ccc' },
-  'NestJS':        { icon: SiNestjs,      color: '#E0234E' },
-  'MongoDB':       { icon: SiMongodb,     color: '#47A248' },
-  'PostgreSQL':    { icon: SiPostgresql,  color: '#4169E1' },
-  'Expo':          { icon: SiExpo,        color: '#000', darkColor: '#fff' },
-  'Stripe':        { icon: SiStripe,      color: '#635BFF' },
-  'Socket.io':     { icon: SiSocketdotio, color: '#010101', darkColor: '#fff' },
-  'Gatsby.js':     { icon: SiGatsby,      color: '#663399' },
-  'GraphQL':       { icon: SiGraphql,     color: '#E10098' },
-  'Git':           { icon: FaGitAlt,      color: '#F05032' },
+  // --- JavaScript Ecosystem ---
+  'React':          { icon: FaReact,       color: '#61DAFB' },
+  'React Native':   { icon: FaReact,       color: '#61DAFB' },
+  'Next.js':        { icon: SiNextdotjs,   color: '#000', darkColor: '#fff' },
+  'TypeScript':     { icon: SiTypescript,  color: '#3178C6' },
+  'JavaScript':     { icon: FaJs,          color: '#F7DF1E' },
+  'Redux Toolkit':  { icon: SiRedux,       color: '#764ABC' },
+  'Zustand':        { icon: SiRedux,       color: '#764ABC' },
+  'Framer Motion':  { icon: SiFramer,      color: '#0055FF' },
+  'Gatsby.js':      { icon: SiGatsby,      color: '#663399' },
+  // --- Styling ---
+  'Tailwind CSS':   { icon: SiTailwindcss, color: '#06B6D4' },
+  // --- Backend JS ---
+  'Node.js':        { icon: FaNodeJs,      color: '#339933' },
+  'Express.js':     { icon: SiExpress,     color: '#888', darkColor: '#ccc' },
+  'NestJS':         { icon: SiNestjs,      color: '#E0234E' },
+  'GraphQL':        { icon: SiGraphql,     color: '#E10098' },
+  'Socket.io':      { icon: SiSocketdotio, color: '#010101', darkColor: '#fff' },
+  // --- PHP Ecosystem ---
+  'PHP':            { icon: SiPhp,         color: '#777BB4' },
+  'PHP Blade':      { icon: SiLaravel,     color: '#FF2D20' },
+  'Laravel':        { icon: SiLaravel,     color: '#FF2D20' },
+  'Laravel Breeze': { icon: SiLaravel,     color: '#FF2D20' },
+  // --- Database ---
+  'MySQL':          { icon: SiMysql,       color: '#4479A1' },
+  'PostgreSQL':     { icon: SiPostgresql,  color: '#4169E1' },
+  'MongoDB':        { icon: SiMongodb,     color: '#47A248' },
+  // --- Mobile ---
+  'Expo':           { icon: SiExpo,        color: '#000', darkColor: '#fff' },
+  // --- Payments / Maps ---
+  'Stripe':         { icon: SiStripe,      color: '#635BFF' },
+  'React Leaflet':  { icon: SiLeaflet,     color: '#B5E285' },
+  // --- Tools ---
+  'Git':            { icon: FaGitAlt,      color: '#F05032' },
+  'Docker':         { icon: FaDocker,      color: '#2496ED' },
+  'Figma':          { icon: FaFigma,       color: '#F24E1E' },
+  // --- AI / Other ---
+  'AI Integration': { icon: SiOpenai,      color: '#10A37F' },
+  'Local Storage':  { icon: FaDatabase,    color: '#6B7280' },
+  'Web Tech':       { icon: FaGlobe,       color: '#3B82F6' },
 };
 
 export default function Projects({ darkMode, lang }) {
@@ -118,6 +141,8 @@ export default function Projects({ darkMode, lang }) {
                       {proj.description}
                     </p>
                   </div>
+
+                  <TeamCredits team={proj.team} darkMode={darkMode} lang={lang} />
 
                   <div className="space-y-4 pt-1">
                     {/* Tech stack badge list */}
@@ -297,6 +322,82 @@ function TechLogos({ tags, darkMode }) {
           </span>
         );
       })}
+    </div>
+  );
+}
+
+function TeamCredits({ team, darkMode, lang }) {
+  // useState HARUS dipanggil sebelum early return (Rules of Hooks)
+  const [isOpen, setIsOpen] = useState(false);
+
+  // Jika properti team tidak ada atau kosong, jangan tampilkan apa-apa
+  if (!team || team.length === 0) return null;
+
+  return (
+    <div className="pt-2 border-t border-dashed border-slate-200 dark:border-slate-800/60 w-full">
+      {/* Tombol Pemicu (Trigger Button) */}
+      <button
+        type="button"
+        onClick={() => setIsOpen(!isOpen)}
+        className={`flex items-center gap-2 text-[10px] font-mono font-bold uppercase tracking-wider py-1 px-2.5 rounded-lg border transition-all duration-200 cursor-pointer ${
+          isOpen
+            ? darkMode
+              ? 'bg-[#99B9C9]/10 border-[#99B9C9]/30 text-[#99B9C9]'
+              : 'bg-[#577B95]/10 border-[#577B95]/30 text-[#577B95]'
+            : darkMode
+              ? 'bg-slate-900/40 border-slate-800 text-slate-400 hover:text-white hover:bg-slate-850'
+              : 'bg-white border-slate-200 text-slate-500 hover:text-[#577B95] hover:bg-slate-50'
+        }`}
+      >
+        <FaUsers size={12} className={`transition-transform duration-200 ${isOpen ? 'scale-110' : ''}`} />
+        <span>
+          {lang === 'en' 
+            ? isOpen ? 'Hide Team' : 'View Team Credits' 
+            : isOpen ? 'Sembunyikan Tim' : 'Lihat Kolaborasi Tim'}
+        </span>
+        
+        {/* Ikon Panah Kecil Indikator */}
+        <svg 
+          className={`w-3 h-3 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`} 
+          fill="none" 
+          stroke="currentColor" 
+          viewBox="0 0 24 24"
+        >
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M19 9l-7 7-7-7" />
+        </svg>
+      </button>
+      
+      {/* Animasi Panel Nama Anggota Tim menggunakan Framer Motion */}
+      <AnimatePresence initial={false}>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0, marginTop: 0 }}
+            animate={{ opacity: 1, height: 'auto', marginTop: 8 }}
+            exit={{ opacity: 0, height: 0, marginTop: 0 }}
+            transition={{ duration: 0.25, ease: "easeInOut" }}
+            className="overflow-hidden"
+          >
+            <div className="flex flex-wrap gap-1.5 p-1">
+              {team.map((member, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, scale: 0.92 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: i * 0.03 }} // Efek muncul bergantian satu per satu
+                  className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-[10px] font-medium border shadow-sm ${
+                    darkMode
+                      ? 'bg-slate-950/60 border-slate-800/80 text-slate-300'
+                      : 'bg-slate-50/80 border-slate-100 text-slate-600'
+                  }`}
+                >
+                  <span className="font-bold tracking-tight">{member.name}</span>
+                  <span className="text-[9px] opacity-60 font-mono">({member.role})</span>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

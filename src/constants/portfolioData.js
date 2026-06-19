@@ -1,4 +1,8 @@
 import profileImg from '../assets/profile.jpeg';
+import sertifikatOracle from '../assets/sertifikat-oracle.pdf';
+import mockupSipangan from '../assets/mockup/mockup-sipangan.png'
+import mockupVibesense from '../assets/mockup/mockup-vibesense.png'
+
 
 export const portfolioData = {
   en: {
@@ -17,10 +21,10 @@ export const portfolioData = {
       cvUrl: "#"
     },
     stats: [
-      { label: "Years of Experience", value: "3+" },
-      { label: "Projects Completed", value: "20+" },
-      { label: "Happy Clients", value: "12+" },
-      { label: "Technologies Mastered", value: "15+" }
+      { label: "Years of Experience", value: "2+" },
+      { label: "Projects Completed", value: "15+" },
+      { label: "Happy Clients", value: "10+" },
+      { label: "Technologies Mastered", value: "10+" }
     ],
     skills: [
       {
@@ -59,137 +63,199 @@ export const portfolioData = {
       }
     ],
     experiences: [
-      {
-        company: "Tech Innovation Corp",
-        role: "Senior Fullstack Developer",
-        location: "Jakarta, Indonesia (Remote)",
-        duration: "Jan 2024 - Present",
-        description: [
-          "Led the frontend team in building internal dashboards using Next.js and Tailwind CSS, improving rendering speed by 40%.",
-          "Designed and developed RESTful APIs based on Node.js & NestJS to manage millions of monthly transaction data.",
-          "Integrated third-party payment gateways (Midtrans/Stripe) and monitored system logs using Sentry."
-        ]
-      },
-      {
-        company: "Creative Digital Studio",
-        role: "Frontend Engineer",
-        location: "Bandung, Indonesia",
-        duration: "Aug 2022 - Dec 2023",
-        description: [
-          "Built and maintained 10+ e-commerce websites and landing page applications for clients using React, Tailwind CSS, and Framer Motion.",
-          "Collaborated with UI/UX designers to translate Figma mockups into pixel-perfect, high-performance React components.",
-          "Boosted average Lighthouse performance scores from 60 to 90+ through image lazy loading and code splitting."
-        ]
-      },
-      {
-        company: "Nusantara Software House",
-        role: "Mobile App Developer (Intern)",
-        location: "Jakarta, Indonesia",
-        duration: "Mar 2022 - Jul 2022",
-        description: [
-          "Assisted in the development of a React Native-based e-wallet mobile application.",
-          "Implemented API integration for user authentication and profile update modules.",
-          "Performed debugging and beta testing of applications on Android and iOS devices."
-        ]
-      }
-    ],
+  {
+    company: "Dicoding Indonesia",
+    role: "Full-Stack Developer Student (Apprenticeship)",
+    location: "Pekanbaru, Riau, Indonesia (Remote)",
+    duration: "Feb 2026 - Jul 2026",
+    description: [
+      "Selected as a participant in a selective full-stack developer learning path, mastering advanced JavaScript front-end technologies, UI/UX implementation, and server-side database engineering.",
+      "Developing practical skills in building responsive, optimized, and scalable web applications aligned with modern industry standards."
+    ]
+  },
+  {
+  company: "IMPHNEN x Kolosal Hackathon",
+  role: "Frontend Developer (Participant)",
+  location: "Team Competition (Online)",
+  duration: "Dec 2025",
+  description: [
+    "Competed in the IMPHNEN x Kolosal Hackathon under the theme 'AI Innovation: Driving Local Businesses with Inclusive AI', designing real-world tech solutions for local MSMEs.",
+    "Served as the Frontend Developer, actively collaborating within a team via GitHub to manage the project repository and handle code integration.",
+    "Collaborated with backend engineers to integrate the application frontend with a MySQL database system for efficient local business data management."
+  ]
+},
+  {
+    company: "Assist.id",
+    role: "Junior Web Developer (Intern)",
+    location: "Pekanbaru, Riau, Indonesia (On-site)",
+    duration: "Jan 2023 - Jun 2023",
+    description: [
+      "Contributed as a Junior Web Developer during a professional internship at a digital healthcare software house, combining practical front-end engineering with meticulous healthcare data management.",
+      "Assisted in building and updating modular web application interfaces utilizing React.js and modern UI libraries, specifically Material-UI (MUI).",
+      "Managed, verified, and organized crucial pharmaceutical and medicine data into Microsoft Excel for health-tech platform system integration."
+    ]
+  }
+],
     projects: [
-      {
-        title: "VibeCart - Modern E-Commerce Platform",
-        description: "A full-featured e-commerce platform with real-time shopping cart, payment integration, product reviews, and an advanced admin panel.",
-        category: "Web App",
-        tags: ["Next.js", "Tailwind CSS", "Zustand", "Stripe", "MongoDB"],
-        image: "https://images.unsplash.com/photo-1557821552-17105176677c?w=600&h=400&fit=crop&q=80",
-        liveUrl: "https://vibecart-demo.vercel.app",
-        githubUrl: "https://github.com/rfldisyah/vibecart"
-      },
-      {
-        title: "PulseFit - Fitness & Health Tracker App",
-        description: "A mobile application for tracking daily fitness activities, counting calories, logging weight, and visualizing fitness progress charts.",
-        category: "Mobile",
-        tags: ["React Native", "Expo", "Redux Toolkit", "Node.js", "PostgreSQL"],
-        image: "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?w=600&h=400&fit=crop&q=80",
-        liveUrl: "#",
-        githubUrl: "https://github.com/rfldisyah/pulsefit"
-      },
-      {
-        title: "CollabTask - Real-Time Project Management",
-        description: "A real-time team collaboration tool similar to Trello, allowing users to create task boards, move task cards, and chat in real-time.",
-        category: "Web App",
-        tags: ["React", "Tailwind CSS", "Express.js", "Socket.io", "MongoDB"],
-        image: "https://images.unsplash.com/photo-1611224885990-ab7363d1f2a9?w=600&h=400&fit=crop&q=80",
-        liveUrl: "https://collabtask-demo.vercel.app",
-        githubUrl: "https://github.com/rfldisyah/collabtask"
-      },
-      {
-        title: "DevBlog - Markdown Developer Blog",
-        description: "A fast, minimalist markdown developer blog supporting Markdown files, instant search, and code syntax highlighting.",
-        category: "Others",
-        tags: ["Gatsby.js", "GraphQL", "Tailwind CSS", "MDX"],
-        image: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=600&h=400&fit=crop&q=80",
-        liveUrl: "https://devblog-demo.vercel.app",
-        githubUrl: "https://github.com/rfldisyah/devblog"
-      }
-    ],
+  {
+    title: "SIPANGAN - Food Security Information System",
+    description: "An intelligent spatial and AI-based analytics platform designed to monitor price stability, map supply chains, and project food commodity security in real-time. Built within a collaborative 6-member team consisting of Frontend, Backend, Data Science, and AI Engineers.",
+    category: "Web App",
+    tags: ["React", "Tailwind CSS", "MySQL", "Framer Motion", "React Leaflet"],
+    image: mockupSipangan, 
+    liveUrl: "https://sipangan-smart.vercel.app/",
+    githubUrl: "https://github.com/panen-predict-hub/FE-SIPANGAN",
+    team: [
+    { name: "Refaldi", role: "Frontend" }, // Menggunakan nama panggilanmu agar ringkas
+    { name: "Labib", role: "Backend" },
+    { name: "Shofia", role: "Data Science" },
+    { name: "Meila", role: "Data Science" },
+    { name: "Reynanda", role: "AI Engineer" },
+    { name: "Claudio", role: "AI Engineer" }
+  ]
+  },
+  {
+    title: "VibeSense AI - AI-Powered Empathy Digital Diary",
+    description: "An interactive digital journaling platform leveraging artificial intelligence to summarize daily logs, analyze emotional metrics (mood tracker), and provide tailored self-reflections. Developed within a collaborative 4-member engineer team.",
+    category: "Web App",
+    tags: ["Laravel", "PHP Blade", "MySQL", "Laravel Breeze", "AI Integration"],
+    image: mockupVibesense,
+    liveUrl: "https://vibessenseai-fasilkom.unilak.ac.id/",
+    githubUrl: "https://github.com/LabibAbdullah1/VibesenseAi",
+    team: [
+      { name: "Refaldi", role: "Frontend & UI/UX" },
+      { name: "Fajar", role: "Frontend" },
+      { name: "Labib", role: "Backend & Logic" },
+      { name: "Leni", role: "Backend & Database" },
+    ]
+  },
+  {
+    title: "Task Management Application",
+    description: "A personal and collaborative task management system that helps users note down, schedule, and monitor work progress efficiently to boost daily productivity.",
+    category: "Web App",
+    tags: ["JavaScript", "Tailwind CSS", "Local Storage"],
+    image: "https://images.unsplash.com/photo-1611224885990-ab7363d1f2a9?w=600&h=400&fit=crop&q=80",
+    liveUrl: "#",
+    githubUrl: "#"
+  },
+  {
+    title: "Cafe Solter - Point of Sales & Landing Page",
+    description: "A web-based solution for café operational management, streamlining menu ordering processes, logging transactions, and doubling as the official interactive landing page for Cafe Solter.",
+    category: "Web App",
+    tags: ["Web Tech", "Database Management"],
+    image: "https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=600&h=400&fit=crop&q=80",
+    liveUrl: "#",
+    githubUrl: "#"
+  }
+],
     education: [
       {
         institution: "Lancang Kuning University",
         degree: "Bachelor of Computer Science (B.Comp.Sc.) - Informatics Engineering",
-        duration: "2019 - 2023",
-        score: "GPA 3.82 / 4.00",
+        duration: "2024 - Present",
+        score: "GPA 3.91 / 4.00",
         achievements: [
-          "Valedictorian of the Faculty of Computer Science in 2023.",
-          "Teaching Assistant for Algorithm and Programming courses for 3 semesters."
+          "Active 4th-semester student with a focus on Fullstack Web Development.",
+          "Successfully organized 'Duckathon', a tech hackathon competition for High School and Vocational students (SMA/SMK), as part of the Duck SC organization."
         ]
       },
       {
         institution: "Dicoding Academy Indonesia",
-        degree: "Learning Path: Becoming a Front-End Web Developer Expert",
+        degree: "Learning Path: Becoming a Fullstack Web Developer Expert",
         duration: "Feb 2026 - June 2026",
         score: "Certificate of Graduation",
         achievements: [
-          "Earned an official, verified front-end web developer professional certification.",
+          "Earned an official, verified full-stack web developer professional certification.",
           "Mastered Web Performance Optimization, Progressive Web Apps (PWA), and Clean Architecture."
         ]
       }
     ],
     certificates: [
-      {
-        title: "Becoming a Front-End Web Developer Expert",
-        issuer: "Dicoding Academy",
-        date: "Oct 2022",
-        credentialUrl: "https://www.dicoding.com/certificates/...",
-        featured: true
-      },
-      {
-        title: "Architecting on AWS",
-        issuer: "Coursera / AWS",
-        date: "Dec 2023",
-        credentialUrl: "https://www.coursera.org/...",
-        featured: true
-      },
-      {
-        title: "React Native - The Practical Guide",
-        issuer: "Udemy",
-        date: "May 2023",
-        credentialUrl: "https://www.udemy.com/...",
-        featured: true
-      },
-      {
-        title: "JavaScript Algorithms and Data Structures",
-        issuer: "freeCodeCamp",
-        date: "Jan 2022",
-        credentialUrl: "https://www.freecodecamp.org/...",
-        featured: false
-      },
-      {
-        title: "EFSET English Certificate (C2 Proficient)",
-        issuer: "EFSET",
-        date: "Aug 2023",
-        credentialUrl: "https://www.efset.org/...",
-        featured: false
-      }
-    ],
+  {
+    title: "Introduction to Financial Literacy",
+    issuer: "Dicoding Academy",
+    date: "Jan 2026",
+    credentialUrl: "https://www.dicoding.com/certificates/81P25RLENPOY",
+    featured: true
+  },
+  {
+    title: "Introduction to Programming Basics for Software Developers",
+    issuer: "Dicoding Academy",
+    date: "Feb 2026",
+    credentialUrl: "https://www.dicoding.com/certificates/JLX1V04DNZ72",
+    featured: false
+  },
+  {
+    title: "Introduction to Programming Logic (Programming Logic 101)",
+    issuer: "Dicoding Academy",
+    date: "Feb 2026",
+    credentialUrl: "https://www.dicoding.com/certificates/4EXG1EGRQPRL",
+    featured: true
+  },
+  {
+    title: "Learning Cloud Basics and Gen AI on AWS",
+    issuer: "Dicoding Academy",
+    date: "Feb 2026",
+    credentialUrl: "https://www.dicoding.com/certificates/JMZVOM263XN9",
+    featured: true
+  },
+  {
+    title: "Learning the Basics of Web Programming",
+    issuer: "Dicoding Academy",
+    date: "Feb 2026",
+    credentialUrl: "https://www.dicoding.com/certificates/EYX4Q2KE5PDL",
+    featured: false
+  },
+  {
+    title: "Learning the Basics of JavaScript Programming",
+    issuer: "Dicoding Academy",
+    date: "Mar 2026",
+    credentialUrl: "https://www.dicoding.com/certificates/98XW01N30XM3",
+    featured: false
+  },
+  {
+    title: "Learning to Build Front-End Web Applications for Beginners",
+    issuer: "Dicoding Academy",
+    date: "Apr 2026",
+    credentialUrl: "https://www.dicoding.com/certificates/2VX30398QXYQ",
+    featured: false
+  },
+  {
+    title: "Learning to Build Web Applications with React",
+    issuer: "Dicoding Academy",
+    date: "Apr 2026",
+    credentialUrl: "https://www.dicoding.com/certificates/81P2ODYQQZOY",
+    featured: false
+  },
+  {
+    title: "Learning the Fundamentals of Web Applications with React",
+    issuer: "Dicoding Academy",
+    date: "Apr 2026",
+    credentialUrl: "https://www.dicoding.com/certificates/98XW019W0XM3",
+    featured: true
+  },
+  {
+    title: "Learning Back-End Development for Beginners with JavaScript",
+    issuer: "Dicoding Academy",
+    date: "May 2026", // Mengubah 'Mei' menjadi 'May'
+    credentialUrl: "https://www.dicoding.com/certificates/1OP8ROKY8ZQK",
+    featured: false
+  },
+  {
+    title: "Learning the Fundamentals of Back-End Development with JavaScript",
+    issuer: "Dicoding Academy",
+    date: "May 2026", // Mengubah 'Mei' menjadi 'May'
+    credentialUrl: "https://www.dicoding.com/certificates/2VX303DWQXYQ",
+    featured: true
+  },
+  {
+    title: "Database Programming with PL/SQL",
+    issuer: "Oracle Academy",
+    date: "Nov 2023",
+    credentialUrl: sertifikatOracle,
+    featured: true
+  }
+],
     common: {
       nav: {
         home: "Home",
@@ -247,10 +313,10 @@ export const portfolioData = {
       cvUrl: "#"
     },
     stats: [
-      { label: "Tahun Pengalaman", value: "3+" },
-      { label: "Proyek Selesai", value: "20+" },
-      { label: "Klien Puas", value: "12+" },
-      { label: "Teknologi Dikuasai", value: "15+" }
+      { label: "Tahun Pengalaman", value: "2+" },
+      { label: "Proyek Selesai", value: "15+" },
+      { label: "Klien Puas", value: "10+" },
+      { label: "Teknologi Dikuasai", value: "10+" }
     ],
     skills: [
       {
@@ -289,135 +355,197 @@ export const portfolioData = {
       }
     ],
     experiences: [
-      {
-        company: "Tech Innovation Corp",
-        role: "Senior Fullstack Developer",
-        location: "Jakarta, Indonesia (Remote)",
-        duration: "Jan 2024 - Sekarang",
-        description: [
-          "Memimpin tim frontend dalam pembuatan dashboard internal menggunakan Next.js dan Tailwind CSS, meningkatkan kecepatan rendering sebesar 40%.",
-          "Merancang dan mengembangkan RESTful API berbasis Node.js & NestJS untuk mengelola jutaan data transaksi bulanan.",
-          "Mengintegrasikan sistem pembayaran pihak ketiga (Midtrans/Stripe) dan memantau log menggunakan Sentry."
-        ]
-      },
-      {
-        company: "Creative Digital Studio",
-        role: "Frontend Engineer",
-        location: "Bandung, Indonesia",
-        duration: "Agt 2022 - Des 2023",
-        description: [
-          "Membangun dan merawat 10+ web e-commerce dan aplikasi landing page klien menggunakan React, Tailwind CSS, dan Framer Motion.",
-          "Bekerja sama dengan UI/UX Designer untuk menerjemahkan mockup Figma menjadi komponen React yang pixel-perfect dan berkinerja tinggi.",
-          "Meningkatkan skor performa Lighthouse dari rata-rata 60 menjadi 90+ melalui pemuatan gambar malas (lazy loading) dan pembagian kode (code splitting)."
-        ]
-      },
-      {
-        company: "Nusantara Software House",
-        role: "Mobile App Developer (Intern)",
-        location: "Jakarta, Indonesia",
-        duration: "Mar 2022 - Jul 2022",
-        description: [
-          "Membantu pengembangan aplikasi e-wallet berbasis React Native.",
-          "Mengimplementasikan integrasi API untuk modul autentikasi pengguna dan pembaruan profil.",
-          "Melakukan debugging dan pengujian beta aplikasi pada perangkat Android dan iOS."
-        ]
-      }
-    ],
+  {
+    company: "Dicoding Indonesia",
+    role: "Full-Stack Developer Student (Apprenticeship)",
+    location: "Pekanbaru, Riau, Indonesia (Remote)",
+    duration: "Feb 2026 - Jul 2026",
+    description: [
+      "Terpilih sebagai peserta dalam alur belajar full-stack developer yang selektif, menguasai teknologi front-end JavaScript tingkat lanjut, implementasi UI/UX, dan database engineering di sisi server.",
+      "Mengembangkan keterampilan praktis dalam membangun aplikasi web yang responsif, teroptimasi, dan scalable sesuai standar industri modern."
+    ]
+  },
+  {
+  company: "IMPHNEN x Kolosal Hackathon",
+  role: "Frontend Developer (Participant)",
+  location: "Kompetisi Tim (Online)",
+  duration: "Des 2025", 
+  description: [
+    "Berkompetisi dalam ajang IMPHNEN x Kolosal Hackathon dengan tema 'Inovasi AI: Mendorong Usaha Lokal dengan AI Inklusif', merancang solusi teknologi nyata untuk membantu UMKM lokal.",
+    "Bertanggung jawab sebagai Frontend Developer, berkolaborasi aktif dalam tim menggunakan GitHub untuk mengelola repositori dan menangani integrasi kode.",
+    "Bekerja sama dengan tim backend untuk menghubungkan antarmuka aplikasi dengan sistem database MySQL guna mengelola data usaha lokal secara efisien."
+  ]
+},
+  {
+    company: "Assist.id",
+    role: "Junior Web Developer (Intern)",
+    location: "Pekanbaru, Riau, Indonesia (On-site)",
+    duration: "Jan 2023 - Jun 2023",
+    description: [
+      "Berkontribusi sebagai Junior Web Developer selama magang profesional di perusahaan software house layanan kesehatan digital, menggabungkan rekayasa front-end dengan manajemen data medis.",
+      "Membantu membangun dan memperbarui antarmuka aplikasi web modular menggunakan React.js dan pustaka UI modern (Material-UI/MUI).",
+      "Mengelola, memverifikasi, dan merapikan data farmasi serta obat-obatan penting ke dalam Microsoft Excel untuk kebutuhan integrasi sistem kesehatan."
+    ]
+  }
+],
     projects: [
-      {
-        title: "VibeCart - Modern E-Commerce Platform",
-        description: "Platform e-commerce lengkap dengan fitur keranjang belanja real-time, integrasi sistem pembayaran, ulasan produk, dan admin panel yang canggih.",
-        category: "Web App",
-        tags: ["Next.js", "Tailwind CSS", "Zustand", "Stripe", "MongoDB"],
-        image: "https://images.unsplash.com/photo-1557821552-17105176677c?w=600&h=400&fit=crop&q=80",
-        liveUrl: "https://vibecart-demo.vercel.app",
-        githubUrl: "https://github.com/rfldisyah/vibecart"
-      },
-      {
-        title: "PulseFit - Fitness & Health Tracker App",
-        description: "Aplikasi mobile pelacak aktivitas olahraga harian, penghitung kalori, pencatatan berat badan, dan visualisasi grafik kemajuan kebugaran.",
-        category: "Mobile",
-        tags: ["React Native", "Expo", "Redux Toolkit", "Node.js", "PostgreSQL"],
-        image: "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?w=600&h=400&fit=crop&q=80",
-        liveUrl: "#",
-        githubUrl: "https://github.com/rfldisyah/pulsefit"
-      },
-      {
-        title: "CollabTask - Real-Time Project Management",
-        description: "Alat kolaborasi kerja tim mirip Trello yang memungkinkan pengguna membuat papan tulis kerja, memindahkan kartu tugas, serta obrolan real-time antar anggota.",
-        category: "Web App",
-        tags: ["React", "Tailwind CSS", "Express.js", "Socket.io", "MongoDB"],
-        image: "https://images.unsplash.com/photo-1611224885990-ab7363d1f2a9?w=600&h=400&fit=crop&q=80",
-        liveUrl: "https://collabtask-demo.vercel.app",
-        githubUrl: "https://github.com/rfldisyah/collabtask"
-      },
-      {
-        title: "DevBlog - Markdown Developer Blog",
-        description: "Situs blog minimalis dan cepat untuk developer, mendukung tulisan berbasis berkas Markdown, fitur pencarian instan, dan syntax highlighting kode pemrograman.",
-        category: "Lainnya",
-        tags: ["Gatsby.js", "GraphQL", "Tailwind CSS", "MDX"],
-        image: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=600&h=400&fit=crop&q=80",
-        liveUrl: "https://devblog-demo.vercel.app",
-        githubUrl: "https://github.com/rfldisyah/devblog"
-      }
-    ],
+  {
+    title: "SIPANGAN - Sistem Informasi Ketahanan Pangan",
+    description: "Platform analitik cerdas berbasis spasial dan AI yang dirancang untuk memantau stabilitas harga, memetakan rantai pasok, serta memproyeksikan ketahanan komoditas pangan secara real-time melalui visualisasi data interaktif dan pemetaan geo-spasial.",
+    category: "Web App",
+    tags: ["React", "Tailwind CSS", "MySQL", "Framer Motion", "React Leaflet"],
+    image: mockupSipangan,
+    liveUrl: "https://sipangan-smart.vercel.app/",
+    githubUrl: "https://github.com/panen-predict-hub/FE-SIPANGAN",
+    team: [
+      { name: "Refaldi", role: "Frontend" },
+      { name: "Labib", role: "Backend" },
+      { name: "Shofia", role: "Data Science" },
+      { name: "Meila", role: "Data Science" },
+      { name: "Reynanda", role: "AI Engineer" },
+      { name: "Claudio", role: "AI Engineer" }
+    ]
+  },
+  {
+    title: "VibeSense AI - Diary Digital Berbasis Empati AI",
+    description: "Platform jurnal digital interaktif yang memanfaatkan integrasi kecerdasan buatan untuk merangkum tulisan harian, menganalisis suasana hati secara cerdas (mood tracker), serta memberikan refleksi personal yang mendalam bagi kenyamanan pengguna.",
+    category: "Web App",
+    tags: ["Laravel", "PHP Blade", "MySQL", "Laravel Breeze", "AI Integration"],
+    image: mockupVibesense,
+    liveUrl: "https://vibessenseai-fasilkom.unilak.ac.id/",
+    githubUrl: "https://github.com/LabibAbdullah1/VibesenseAi",
+    team: [
+      { name: "Refaldi", role: "Frontend & UI/UX" },
+      { name: "Fajar", role: "Frontend" },
+      { name: "Labib", role: "Backend & Logic" },
+      { name: "Leni", role: "Backend & Database" },
+    ]
+  },
+  {
+    title: "Aplikasi Manajemen Tugas",
+    description: "Sistem manajemen tugas personal dan kolaboratif untuk membantu pengguna mencatat, menjadwalkan, dan melacak progress pekerjaan secara efisien guna meningkatkan produktivitas harian.",
+    category: "Web App",
+    tags: ["JavaScript", "Tailwind CSS", "Local Storage"],
+    image: "https://images.unsplash.com/photo-1611224885990-ab7363d1f2a9?w=600&h=400&fit=crop&q=80",
+    liveUrl: "#",
+    githubUrl: "#"
+  },
+  {
+    title: "Cafe Solter - Point of Sales & Landing Page",
+    description: "Aplikasi berbasis web untuk manajemen operasional kafe, mempermudah proses pemesanan menu, pencatatan transaksi, sekaligus berfungsi sebagai profil interaktif Cafe Solter.",
+    category: "Web App",
+    tags: ["Web Tech", "Database Management"],
+    image: "https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=600&h=400&fit=crop&q=80",
+    liveUrl: "#",
+    githubUrl: "#"
+  }
+],
     education: [
       {
         institution: "Universitas Lancang Kuning",
         degree: "Sarjana Komputer (S.Kom.) - Teknik Informatika",
-        duration: "2019 - 2023",
-        score: "IPK 3.82 / 4.00",
+        duration: "2024 - Sekarang",
+        score: "IPK 3.91 / 4.00",
         achievements: [
-          "Lulusan Terbaik Fakultas Ilmu Komputer tahun 2023.",
-          "Asisten Dosen mata kuliah Algoritma dan Pemrograman selama 3 semester."
+          "Mahasiswa aktif semester 4 dengan fokus pada Pengembangan Web Fullstack.",
+          "Berhasil menyelenggarakan 'Duckathon', kompetisi hackathon teknologi untuk siswa SMA/SMK, di bawah naungan organisasi Duck SC."
         ]
       },
       {
         institution: "Dicoding Academy Indonesia",
-        degree: "Learning Path: Menjadi Front-End Web Developer Expert",
+        degree: "Learning Path: Menjadi FullStack Web Developer Expert",
         duration: "Feb 2026 - Juni 2026",
         score: "Sertifikat Kelulusan",
         achievements: [
-          "Mendapatkan sertifikasi profesi resmi front-end web developer terverifikasi.",
+          "Mendapatkan sertifikasi profesi resmi front-end dan back-end web developer terverifikasi.",
           "Menguasai Web Performance Optimization, Progressive Web Apps (PWA), dan Clean Architecture."
         ]
       }
     ],
     certificates: [
       {
-        title: "Menjadi Front-End Web Developer Expert",
+        title: "Introduction to Financial Literacy",
         issuer: "Dicoding Academy",
-        date: "Okt 2022",
-        credentialUrl: "https://www.dicoding.com/certificates/...",
+        date: "Jan 2026",
+        credentialUrl: "https://www.dicoding.com/certificates/81P25RLENPOY",
         featured: true
       },
       {
-        title: "Architecting on AWS",
-        issuer: "Coursera / AWS",
-        date: "Des 2023",
-        credentialUrl: "https://www.coursera.org/...",
-        featured: true
-      },
-      {
-        title: "React Native - The Practical Guide",
-        issuer: "Udemy",
-        date: "Mei 2023",
-        credentialUrl: "https://www.udemy.com/...",
-        featured: true
-      },
-      {
-        title: "JavaScript Algorithms and Data Structures",
-        issuer: "freeCodeCamp",
-        date: "Jan 2022",
-        credentialUrl: "https://www.freecodecamp.org/...",
+        title: "Memulai Dasar Pemrograman untuk Menjadi Pengembang Software",
+        issuer: "Dicoding Academy",
+        date: "Feb 2026",
+        credentialUrl: "https://www.dicoding.com/certificates/JLX1V04DNZ72",
         featured: false
       },
       {
-        title: "EFSET English Certificate (C2 Proficient)",
-        issuer: "EFSET",
-        date: "Ags 2023",
-        credentialUrl: "https://www.efset.org/...",
+        title: "Pengenalan ke Logika Pemrograman (Programming Logic 101)",
+        issuer: "Dicoding Academy",
+        date: "Feb 2026",
+        credentialUrl: "https://www.dicoding.com/certificates/4EXG1EGRQPRL",
+        featured: true
+      },
+      {
+        title: "Belajar Dasar Cloud dan Gen AI di AWS",
+        issuer: "Dicoding Academy",
+        date: "Feb 2026",
+        credentialUrl: "https://www.dicoding.com/certificates/JMZVOM263XN9",
+        featured: true
+      },
+      {
+        title: "Belajar Dasar Pemrograman Web",
+        issuer: "Dicoding Academy",
+        date: "Feb 2026",
+        credentialUrl: "https://www.dicoding.com/certificates/EYX4Q2KE5PDL",
         featured: false
+      },
+      {
+        title: "Belajar Dasar Pemrograman JavaScript",
+        issuer: "Dicoding Academy",
+        date: "Mar 2026",
+        credentialUrl: "https://www.dicoding.com/certificates/98XW01N30XM3",
+        featured: false
+      },
+      {
+        title: "Belajar Membuat Front-End Web untuk Pemula",
+        issuer: "Dicoding Academy",
+        date: "Apr 2026",
+        credentialUrl: "https://www.dicoding.com/certificates/2VX30398QXYQ",
+        featured: false
+      },
+      {
+        title: "Belajar Membuat Aplikasi Web dengan React",
+        issuer: "Dicoding Academy",
+        date: "Apr 2026",
+        credentialUrl: "https://www.dicoding.com/certificates/81P2ODYQQZOY",
+        featured: false
+      },
+      {
+        title: "Belajar Fundamental Aplikasi Web dengan React",
+        issuer: "Dicoding Academy",
+        date: "Apr 2026",
+        credentialUrl: "https://www.dicoding.com/certificates/98XW019W0XM3",
+        featured: true
+      },
+      {
+        title: "Belajar Back-End Pemula dengan JavaScript",
+        issuer: "Dicoding Academy",
+        date: "Mei 2026",
+        credentialUrl: "https://www.dicoding.com/certificates/1OP8ROKY8ZQK",
+        featured: false
+      },
+      {
+        title: "Belajar Fundamental Back-End dengan JavaScript",
+        issuer: "Dicoding Academy",
+        date: "Mei 2026",
+        credentialUrl: "https://www.dicoding.com/certificates/2VX303DWQXYQ",
+        featured: true
+      },
+      {
+        title: "Database Programming with PL/SQL",
+        issuer: "Oracle Academy",
+        date: "Nov 2023",
+        credentialUrl: sertifikatOracle,
+        featured: true
       }
     ],
     common: {
