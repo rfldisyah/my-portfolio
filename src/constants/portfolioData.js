@@ -1,5 +1,7 @@
 import profileImg from '../assets/profile.jpeg';
 import sertifikatOracle from '../assets/sertifikat-oracle.pdf';
+import cvEn from '../assets/CV_Refaldi_Julidinsyah_EN.pdf';
+import cvId from '../assets/CV_Refaldi_Julidinsyah_ID.pdf';
 import mockupSipangan from '../assets/mockup/mockup-sipangan.png'
 import mockupVibesense from '../assets/mockup/mockup-vibesense.png'
 
@@ -18,7 +20,7 @@ export const portfolioData = {
         instagram: "https://instagram.com/rfldisyh_",
         email: "syahrefaldi@email.com"
       },
-      cvUrl: "#"
+      cvUrl: cvEn
     },
     stats: [
       { label: "Years of Experience", value: "2+" },
@@ -106,7 +108,7 @@ export const portfolioData = {
     liveUrl: "https://sipangan-smart.vercel.app/",
     githubUrl: "https://github.com/panen-predict-hub/FE-SIPANGAN",
     team: [
-    { name: "Refaldi", role: "Frontend" }, // Menggunakan nama panggilanmu agar ringkas
+    { name: "Refaldi", role: "Frontend" }, 
     { name: "Labib", role: "Backend" },
     { name: "Shofia", role: "Data Science" },
     { name: "Meila", role: "Data Science" },
@@ -310,7 +312,7 @@ export const portfolioData = {
         instagram: "https://instagram.com/rfldisyh_",
         email: "syahrefaldi@email.com"
       },
-      cvUrl: "#"
+      cvUrl: cvId
     },
     stats: [
       { label: "Tahun Pengalaman", value: "2+" },
